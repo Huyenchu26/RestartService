@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web;
 using System.Web.Http;
 
 namespace Restart.Controllers
@@ -25,6 +26,8 @@ namespace Restart.Controllers
         {
             List<Dictionary<string, Dictionary<string, string>>> listJson = new List<Dictionary<string, Dictionary<string, string>>>();
             string[] listFile = LimitData.ProcessDirectory(Config.PathFile);
+            if (listFile == null)
+                return null;
             for (int i = 0; i < listFile.Length; i++)
             {
                 List<Dictionary<string, Dictionary<string, string>>> file_data = new List<Dictionary<string, Dictionary<string, string>>>();
@@ -117,7 +120,7 @@ namespace Restart.Controllers
                     var file = new System.IO.StreamReader(filestream);
                     string line_of_text;
                     do
-                    // chua handle error
+                    // handle error
                     {
                         Dictionary<string, Dictionary<string, string>> record = new Dictionary<string, Dictionary<string, string>>();
                         line_of_text = file.ReadLine();

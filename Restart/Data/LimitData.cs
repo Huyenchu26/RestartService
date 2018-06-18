@@ -88,6 +88,8 @@ public class LimitData
     public static string[] ProcessDirectory(string pathfile)
     {
         // get list file in folder
+        if (!Directory.Exists(pathfile))
+            return null;
         string[] fileList = Directory.GetFiles(pathfile);
         string[] ListFileName = new string[fileList.Length];
 
