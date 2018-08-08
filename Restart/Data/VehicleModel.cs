@@ -43,4 +43,11 @@ public class VehicleModel
             "cpu_time" }
         }
     };
+
+    public class Response
+    {
+        public int code;
+        public String message;
+        public List<VehicleModel> vehicles;
+    }
 }
